@@ -9,6 +9,9 @@ It's a very fast and fairly robust captioning model that can produce good output
 
 * Cuda 12.1.
   * It may work with other versions. Untested.
+ 
+* GPU with 24gb VRAM
+  * It gets out of memory on a 3090 unless images are resized to ~1024x1024 (included in the script)
 
 ## Setup
 1. Create a virtual environment. Use the included `venv_create.bat` to automatically create it. Use python 3.10 or above.
