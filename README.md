@@ -1,5 +1,5 @@
 # Qwen2 Caption Batch
-This tool uses the [VLM Florence2](https://huggingface.co/microsoft/Florence-2-large) from Microsoft to caption images in an input folder. Thanks to their team for training this great model.
+This tool uses the VLM [Qwen2-VL-7B-Instruct](https://huggingface.co/Qwen/Qwen2-VL-7B-Instruct) from Qwen to caption images in an input folder. Thanks to their team for training this great model.
 
 It's a very fast and fairly robust captioning model that can produce good outputs in 3 different levels of detail.
 
