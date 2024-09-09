@@ -11,7 +11,7 @@ import argparse
 # Configuration options
 PRINT_CAPTIONS = False  # Print captions to the console during inference
 PRINT_CAPTIONING_STATUS = False  # Print captioning file status to the console
-OVERWRITE = False  # Allow overwriting existing caption files
+OVERWRITE = True  # Allow overwriting existing caption files
 PREPEND_STRING = ""  # Prefix string to prepend to the generated caption
 APPEND_STRING = ""  # Suffix string to append to the generated caption
 STRIP_LINEBREAKS = True  # Remove line breaks from generated captions before saving
@@ -37,7 +37,7 @@ DEFAULT_PROMPT = "In one medium sentence, caption the key aspects of this image"
 # In one short sentence, caption the key aspects of this image
 
 # Medium caption
-# Describe this image in 60 words
+# In one medium sentence, caption the key aspects of this image
 
 # Long caption
 # Describe all details of this image
@@ -100,7 +100,8 @@ def save_caption_to_file(image_path, caption, save_format):
         print(f"Caption for {os.path.abspath(image_path)} saved in {save_format} format.")
 
 # Function to process all images recursively in a folder
-def process_images_in_folder(images_to_caption, prompt, save_format, max_width="", max_height="", repetition_penalty=REPETITION_PENALTY, temperature=TEMPERATURE, top_k=TOP_K):
+def process_images_in_folder(images_to_caption, prompt, save_format, max_width=MAX_WIDTH, max_height=MAX_HEIGHT, repetition_penalty=REPETITION_PENALTY, temperature=TEMPERATURE, top_k=TOP_K):
+    
     for image_path in tqdm(images_to_caption, desc="Processing Images"):
         try:
             image = Image.open(image_path).convert("RGB")
@@ -253,4 +254,4 @@ if __name__ == "__main__":
         qwen_processor = AutoProcessor.from_pretrained("Qwen/Qwen2-VL-7B-Instruct", trust_remote_code=True)
 
         # Process the images with optional resizing and caption generation
-        process_images_in_folder(images_to_caption, prompt, save_format, max_width=max_width, max_height=max_height, repetition_penalty=repetition_penalty, temperature=temperature, top_k=top_k)
+        process_images_in_folder(images_to_caption, prompt, save_format, max_width=MAX_WIDTH, max_height=MAX_HEIGHT, repetition_penalty=repetition_penalty, temperature=temperature, top_k=top_k)
